@@ -1,0 +1,64 @@
+## Single Stone Senior Data Engineering Challenge
+
+### Problem statement
+
+For this exercise, please write a Python application that processes two data files:
+
+students.csv containing student data
+teachers.parquet containing teacher data
+From these files, generate an output file in json listing:
+
+Each student
+The teacher the student has
+he class ID the student is scheduled for
+Assumptions: An analyst with no Python coding ability should be able to setup and run the app using the directions provided.
+
+### Tech stack used
+* Python
+* PySpark
+* Docker
+
+### Library used
+
+* findspark==1.4.2
+* pyspark==3.0.1
+* pytest==6.0.2
+
+## Basic Flow of our code
+
+When you run the using `python main.py` or `spark-submit main.py` it will utilize the module I have created under **data_python_engine**.
+
+**Step by step process of flow:**
+
+1) To create the Spark session it will use dependencies/spark_setup.py
+2) To read and write the files it will use etl_scripts/file_handler.py
+3) To join the data it will use etl_scripts/spark_functions.py
+4) To transform the data as we expect it will use etl_scripts/transform.py
+
+**Data is provided from data folder, I have created two folders input and Output folder**
+
+## Test cases
+
+Test cases are in tests folder, run test cases using `pytest tests/`
+
+## Containerized the process using Docker
+
+**Build docker image**
+
+docker build -t single-stone:1.0.8 .
+
+**Run the docker and run `main.py` in docker container**
+
+docker run -u 0 -it single-stone:1.0.8 /opt/spark/bin/spark-submit main.py
+
+**Run and Enter into docker container**
+
+docker run -u 0 -it single-stone:1.0.8 /bin/bash
+
+
+
+
+
+
+
+
